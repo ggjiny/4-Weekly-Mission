@@ -19,17 +19,28 @@ interface Link {
   url: string;
 }
 
+interface Folder {
+  id: number;
+  created_at: string;
+  name: string;
+  user_id: number;
+  favorite: boolean;
+  link: {
+    count: number;
+  };
+}
+
 interface FolderCardItemProps {
-  link: Link | null;
-  folderList: any;
+  link: Link;
+  folderList: Folder[];
   searchItem: string;
 }
 
 const FolderCardItem = ({ link, folderList, searchItem }: FolderCardItemProps) => {
   const { created_at, description, image_source, title, url } = link || {};
-  const [dropdown, setDropdown] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [action, setAction] = useState('');
+  const [operation, setOperation] = useState('');
   const formattedCreatedAt: string = created_at as string;
 
   const isSearchedLink = () => {
@@ -47,9 +58,9 @@ const FolderCardItem = ({ link, folderList, searchItem }: FolderCardItemProps) =
   }
 
   const handleClick = (text: string) => {
-    setAction(text);
+    setOperation(text);
     setIsModalOpen(true);
-    setDropdown(false);
+    setIsDropdownOpen(false);
   };
 
   return (
@@ -64,6 +75,7 @@ const FolderCardItem = ({ link, folderList, searchItem }: FolderCardItemProps) =
               alt={title}
               width={340}
               height={200}
+              priority={true}
             />
           </div>
         ) : (
@@ -81,9 +93,9 @@ const FolderCardItem = ({ link, folderList, searchItem }: FolderCardItemProps) =
         className={styles['kebab-icon']}
         src={kebabIcon}
         alt="kebab-icon"
-        onClick={() => setDropdown(!dropdown)}
+        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
       />
-      {dropdown && (
+      {isDropdownOpen && (
         <div className={styles['card-dropdown']}>
           <div
             className={styles['card-dropdown-menu']}
@@ -102,7 +114,7 @@ const FolderCardItem = ({ link, folderList, searchItem }: FolderCardItemProps) =
       {isModalOpen && (
         <ModalPortal>
           <Modal
-            action={action}
+            operation={operation}
             data={{ link: link?.url, folderList }}
             closeModal={() => setIsModalOpen(false)}
           />

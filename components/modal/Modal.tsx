@@ -7,22 +7,22 @@ import ShareFolderModal from './ShareFolderModal';
 import AddLinkModal from './AddLinkModal';
 
 interface ModalProps {
-  action: string;
+  operation: string;
   closeModal: () => void;
   data?: any;
 }
 
-const Modal = ({ action, closeModal, data = {} }: ModalProps) => {
+const Modal = ({ operation, closeModal, data = {} }: ModalProps) => {
   const renderModal = () => {
-    switch (action) {
+    switch (operation) {
       case 'add-link':
         return <AddLinkModal data={data} closeModal={closeModal} />;
 
       case 'add-folder':
         return <AddFolderModal closeModal={closeModal} />;
 
-      case 'rename':
-        return <RenameFolderModal closeModal={closeModal} />;
+      case 'rename-folder':
+        return <RenameFolderModal data={data} closeModal={closeModal} />;
 
       case 'delete-folder':
         return <DeleteFolderModal data={data} closeModal={closeModal} />;
@@ -30,7 +30,7 @@ const Modal = ({ action, closeModal, data = {} }: ModalProps) => {
       case 'delete-link':
         return <DeleteLinkModal data={data} closeModal={closeModal} />;
 
-      case 'share':
+      case 'share-folder':
         return <ShareFolderModal data={data} closeModal={closeModal} />;
 
       default:

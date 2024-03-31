@@ -41,20 +41,17 @@ const ShareFolderModal = ({ data, closeModal }: ShareFolderModalProps) => {
       </div>
       <div className={styles['sns-box']}>
         <KakaoShare folderId={data.id} />
-        <div className={styles['icon-box']} onClick={handleFacebookShare}>
-          <div id={styles.facebook}>
+        <div className={styles['icon-box']}>
+          <div id={styles.facebook} onClick={handleFacebookShare}>
             <Image src={facebookIcon} alt="facebook" width={18} height={18} />
           </div>
-          페이스북
+          <span>페이스북</span>
         </div>
-        <div
-          className={styles['icon-box']}
-          onClick={() => handleCopyClipBoard(`${BASE_URL}/shared`)}
-        >
-          <div id={styles.link}>
+        <div className={styles['icon-box']}>
+          <div id={styles.link} onClick={() => handleCopyClipBoard(`${BASE_URL}/shared`)}>
             <Image src={linkIcon} alt="link" width={18} height={18} />
           </div>
-          링크복사
+          <span>링크복사</span>
         </div>
       </div>
       <button className={styles.close} onClick={closeModal}>

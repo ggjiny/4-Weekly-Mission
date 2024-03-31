@@ -42,7 +42,7 @@ const AddLinkBar = ({ barRef, folderData }: AddLinkBarProps) => {
       {isModalOpen && (
         <ModalPortal>
           <Modal
-            action="add-link"
+            operation="add-link"
             data={{ link: value, folderList: folderData }}
             closeModal={() => setIsModalOpen(false)}
           />

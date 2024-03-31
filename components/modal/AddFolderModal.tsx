@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import styles from './Modal.module.css';
 import Image from 'next/image';
 import closeIcon from '../../public/icons/close.svg';
@@ -9,6 +9,9 @@ interface AddFolderModalProps {
 
 const AddFolderModal = ({ closeModal }: AddFolderModalProps) => {
   const [inputValue, setInputValue] = useState('');
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  };
 
   return (
     <>
@@ -20,7 +23,7 @@ const AddFolderModal = ({ closeModal }: AddFolderModalProps) => {
         type="text"
         value={inputValue}
         placeholder="내용 입력"
-        onChange={(e) => setInputValue(e.target.value)}
+        onChange={handleChange}
       />
       <button className={styles.button}>추가하기</button>
       <button className={styles.close} onClick={closeModal}>

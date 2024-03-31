@@ -11,7 +11,7 @@ import Modal from '../modal/Modal';
 import Image from 'next/image';
 
 interface Link {
-  id: string;
+  id: number;
   created_at: string;
   description: string;
   image_source: string;
@@ -31,7 +31,7 @@ interface Folder {
 }
 
 interface FolderCardListProps {
-  id: string;
+  id: number;
   name: string;
   folderList: Folder[];
   searchItem: string;
@@ -41,15 +41,17 @@ const FolderCardList = ({ id, name, folderList, searchItem }: FolderCardListProp
   const { result, execute, loading } = useAsync(() => getLinks(Number(id)));
   const { data: links } = result || [];
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [action, setAction] = useState('');
+  const [operation, setOperation] = useState('');
+  const [renameData, setRenameData] = useState('');
 
   useEffect(() => {
     execute();
   }, [id]);
 
   const handleModalOpen = (text: string) => {
-    setAction(text);
+    setOperation(text);
     setIsModalOpen(true);
+    setRenameData(name);
   };
   return (
     <>
@@ -58,11 +60,11 @@ const FolderCardList = ({ id, name, folderList, searchItem }: FolderCardListProp
           <div className={styles.name}>{name}</div>
           {name !== '전체' && (
             <div className={styles.icons}>
-              <button onClick={() => handleModalOpen('share')}>
+              <button onClick={() => handleModalOpen('share-folder')}>
                 <Image src={shareIcon} alt="share-icon" width={20} height={20} />
                 공유
               </button>
-              <button onClick={() => handleModalOpen('rename')}>
+              <button onClick={() => handleModalOpen('rename-folder')}>
                 <Image src={penIcon} alt="pen-icon" width={20} height={20} />
                 이름 변경
               </button>
@@ -78,7 +80,7 @@ const FolderCardList = ({ id, name, folderList, searchItem }: FolderCardListProp
         <div className={styles['no-link-data']}>데이터를 불러오는 중...</div>
       ) : (
         <>
-          {links && links.length > 0 ? (
+          {links?.length > 0 ? (
             <div className={styles['card-list']}>
               <div className={styles['card-list-container']}>
                 {links.map((item: Link) => (
@@ -99,8 +101,8 @@ const FolderCardList = ({ id, name, folderList, searchItem }: FolderCardListProp
       {isModalOpen && (
         <ModalPortal>
           <Modal
-            action={action}
-            data={{ name, id }}
+            operation={operation}
+            data={{ name, id, renameData }}
             closeModal={() => setIsModalOpen(false)}
           />
         </ModalPortal>

@@ -23,10 +23,15 @@ const UserInfo = ({ email, imgSrc }: UserInfoProps) => {
   );
 };
 
+const INITIAL_USER_DATA = {
+  email: '',
+  image_source: '',
+};
+
 const Nav = () => {
   const { result } = useAsync(getUserInfo);
   const data = result ? result['data'] : [];
-  const initialUserData: UserData = { email: '', image_source: '' };
+  const initialUserData: UserData = INITIAL_USER_DATA;
   const userData = data.length > 0 ? data[0] : initialUserData;
   const { email, image_source } = userData;
 
@@ -34,7 +39,14 @@ const Nav = () => {
     <nav className={styles.nav}>
       <div className={styles.container}>
         <Link href="/">
-          <Image src={logoIcon} alt="logo" id={styles.logo} />
+          <Image
+            src={logoIcon}
+            alt="logo"
+            id={styles.logo}
+            width={133}
+            height={24}
+            priority={true}
+          />
         </Link>
         {email ? (
           <UserInfo email={email} imgSrc={image_source} />

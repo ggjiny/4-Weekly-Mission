@@ -65,10 +65,10 @@ const AddLinkModal = ({ data, closeModal }: AddLinkModalProps) => {
         {folderList.map((folder) => (
           <FolderInfo
             key={folder.id}
-            name={folder['name']}
-            count={folder['link']['count']}
+            name={folder.name}
+            count={folder.link.count}
             onSelect={handleFolderSelect}
-            isSelected={selectedFolder === folder['name']}
+            isSelected={selectedFolder === folder.name}
           />
         ))}
       </div>

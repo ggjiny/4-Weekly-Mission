@@ -13,16 +13,16 @@ interface KakaoShareProps {
 }
 
 const KakaoShare = ({ folderId }: KakaoShareProps) => {
+  const kakao = window.Kakao;
   const url: string = `http://localhost:3000/shared/${folderId}`;
-
   useEffect(() => {
-    window.Kakao.cleanup();
-    window.Kakao.init(process.env.REACT_APP_KAKAO_KEY);
-    console.log(window.Kakao.isInitialized());
+    kakao.cleanup();
+    kakao.init(process.env.NEXT_PUBLIC_REACT_APP_KAKAO_KEY);
+    console.log(kakao.isInitialized());
   }, []);
 
   const shareKakao = () => {
-    window.Kakao.Share.sendDefault({
+    kakao.Share.sendDefault({
       objectType: 'feed',
       content: {
         title: '예진 Linkbrary',

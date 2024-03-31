@@ -4,11 +4,12 @@ import Image from 'next/image';
 import closeIcon from '../../public/icons/close.svg';
 
 interface RenameFolderModalProps {
+  data: { renameData: string };
   closeModal: () => void;
 }
 
-const RenameFolderModal = ({ closeModal }: RenameFolderModalProps) => {
-  const [inputValue, setInputValue] = useState('');
+const RenameFolderModal = ({ data, closeModal }: RenameFolderModalProps) => {
+  const [inputValue, setInputValue] = useState(data.renameData);
 
   return (
     <>

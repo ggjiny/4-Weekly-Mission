@@ -46,6 +46,7 @@ const CardItem = ({ link, searchItem }: CardItemProps) => {
               alt={title}
               width={340}
               height={200}
+              priority={true}
             />
           </div>
         ) : (

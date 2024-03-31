@@ -8,18 +8,28 @@ import classNames from 'classnames';
 import Image from 'next/image';
 
 interface FolderData {
-  id: string;
+  id: number;
   name: string;
+}
+interface Folder {
+  id: number;
+  created_at: string;
+  name: string;
+  user_id: number;
+  favorite: boolean;
+  link: {
+    count: number;
+  };
 }
 
 interface FolderItemProps {
-  data: FolderData;
+  data: Folder;
   onFolderClick: (folder: FolderData) => void;
   isSelected: boolean;
 }
 
 interface FolderListProps {
-  folderData: FolderData[];
+  folderData: Folder[];
   search: string;
 }
 
@@ -37,9 +47,13 @@ const FolderItem = ({ data, onFolderClick, isSelected }: FolderItemProps) => {
     </div>
   );
 };
+const INITIAL_FOLDER = {
+  id: 0,
+  name: '전체',
+};
 
 const FolderList = ({ folderData, search }: FolderListProps) => {
-  const [selectedFolder, setSelectedFolder] = useState<FolderData>({ id: '', name: '전체' });
+  const [selectedFolder, setSelectedFolder] = useState<FolderData>(INITIAL_FOLDER);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const selectFolder = (folder: FolderData) => {
@@ -55,7 +69,7 @@ const FolderList = ({ folderData, search }: FolderListProps) => {
               className={classNames(styles.button, {
                 [styles.selected]: selectedFolder.name === '전체',
               })}
-              onClick={() => selectFolder({ id: '', name: '전체' })}
+              onClick={() => selectFolder(INITIAL_FOLDER)}
             >
               전체
             </div>
@@ -93,7 +107,7 @@ const FolderList = ({ folderData, search }: FolderListProps) => {
       )}
       {isModalOpen && (
         <ModalPortal>
-          <Modal action="add-folder" closeModal={() => setIsModalOpen(false)} />
+          <Modal operation="add-folder" closeModal={() => setIsModalOpen(false)} />
         </ModalPortal>
       )}
     </>
