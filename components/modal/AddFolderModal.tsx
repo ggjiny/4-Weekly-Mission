@@ -23,7 +23,7 @@ const AddFolderModal = ({ closeModal }: AddFolderModalProps) => {
         onChange={(e) => setInputValue(e.target.value)}
       />
       <button className={styles.button}>추가하기</button>
-      <button className={styles.button} onClick={closeModal}>
+      <button className={styles.close} onClick={closeModal}>
         <Image src={closeIcon} alt="close-icon" width={24} height={24} />
       </button>
     </>

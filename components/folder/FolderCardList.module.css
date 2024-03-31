@@ -1,0 +1,108 @@
+.folderList {
+  display: flex;
+  justify-content: center;
+  padding-top: 2.5rem;
+}
+.container {
+  display: flex;
+  width: 66.25rem;
+  justify-content: space-between;
+  align-items: center;
+}
+.name {
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.0125rem;
+}
+.icons {
+  display: flex;
+  flex-direction: row;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: center;
+}
+.icons img {
+  width: 1.25rem;
+}
+.icons button {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+
+  color: var(--Linkbrary-gray60, #9fa6b2);
+  font-family: Pretendard;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.no-link-data {
+  display: flex;
+  height: 6.25rem;
+  margin-top: 2rem;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5rem; /* 150% */
+}
+.card-list-container {
+  width: 66.3rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  column-gap: 1.25rem;
+  row-gap: 1.56rem;
+}
+.card-list {
+  display: flex;
+
+  justify-content: center;
+  padding: 2.5rem 0;
+  width: 100%;
+}
+
+@media (min-width: 375px) and (max-width: 767px) {
+  .folderList {
+    width: 100%;
+    max-width: 20.3125rem;
+    margin: 0 auto;
+  }
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  .card-list-container {
+    max-width: 20.3rem;
+    width: 100%;
+  }
+  .card-list {
+    margin: 0 auto;
+    padding: 2rem 32px;
+    padding-bottom: 1.25rem;
+  }
+}
+/* Tablet 768~1124*/
+@media (min-width: 768px) and (max-width: 1124px) {
+  .folderList {
+    width: 100%;
+    max-width: 44rem;
+    margin: 0 auto;
+  }
+  .card-list-container {
+    max-width: 44rem;
+    width: 100%;
+    column-gap: 1.5rem;
+    margin: 0;
+  }
+  .card-list {
+    margin: 0 auto;
+    padding: 2.5rem 32px;
+  }
+}
