@@ -1,0 +1,33 @@
+.input {
+  border-radius: 0.5rem;
+  border: 0.0625rem solid var(--gray20);
+  background: var(--white);
+  font-size: 1rem;
+  padding: 1.125rem 0.9375rem;
+}
+.error {
+  border: 0.0625rem solid var(--red);
+}
+.eye {
+  width: 1rem;
+
+  position: absolute;
+  top: 3rem;
+  right: 1.5rem;
+
+  cursor: pointer;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+.errorMessage {
+  margin-top: 0.38rem;
+  color: var(--red);
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: left;
+}

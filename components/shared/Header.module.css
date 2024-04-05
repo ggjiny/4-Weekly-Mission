@@ -1,0 +1,65 @@
+.container {
+  display: flex;
+  padding-top: 1.25rem;
+  padding-bottom: 3.75rem;
+  width: 100%;
+
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  margin: 0 auto;
+  background: var(--background);
+}
+.owner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+#img {
+  display: flex;
+  height: 3.75rem;
+  justify-content: center;
+  align-items: center;
+}
+#name {
+  color: var(--text-color-light-mode, #000);
+  font-family: Pretendard;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5rem; /* 150% */
+}
+#folderName {
+  color: #000;
+
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 2.5rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.fail {
+  margin: 0 auto;
+}
+/* Mobile 375~767*/
+@media (min-width: 375px) and (max-width: 767px) {
+  .container {
+    gap: 0.625rem;
+    padding-top: 0.625rem;
+    padding-bottom: 2.5rem;
+  }
+  .owner {
+    gap: 0.375rem;
+  }
+  #img {
+    height: 2.5rem;
+  }
+  #name {
+    font-size: 0.875rem;
+  }
+  #folderName {
+    font-size: 2rem;
+  }
+}
