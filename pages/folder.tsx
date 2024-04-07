@@ -21,7 +21,7 @@ const FolderPage = () => {
     <>
       <Nav />
       <AddLinkBar barRef={addLinkBarRef} folderData={data} />
-      <main>
+      <main style={{ backgroundColor: 'white' }}>
         <SearchBar
           value={searchInput}
           onInputChange={(value: string) => handleSearchInputChange(value)}

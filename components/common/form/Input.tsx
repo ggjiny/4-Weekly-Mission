@@ -6,10 +6,10 @@ import styles from './Input.module.css';
 import classNames from 'classnames';
 
 interface InputProps {
-  name: string;
-  type: 'text' | 'password' | 'email';
-  value: string;
-  onChange: (name: string, value: string) => void;
+  //name: string;
+  // type: 'text' | 'password' | 'email';
+  //value: string;
+  //onChange: (name: string, value: string) => void;
   placeholder: string;
 }
 
@@ -17,13 +17,13 @@ const validateFunc = (input: string) => {
   return input.length > 4;
 };
 
-export default function Input({ name, type, value, onChange, placeholder = '' }: InputProps) {
+export default function Input({ placeholder = '' }: InputProps) {
   const [eye, setEye] = useState(false);
   const [isValid, setIsValid] = useState(true);
   const customType = type === 'password' ? (eye ? 'text' : 'password') : type;
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    onChange(name, e.target.value);
-  };
+  // const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  //   onChange(name, e.target.value);
+  // };
 
   const handleEyeClick = () => {
     setEye(!eye);
@@ -37,10 +37,10 @@ export default function Input({ name, type, value, onChange, placeholder = '' }:
       <input
         className={classNames(styles.input, { [styles.error]: !isValid })}
         name={name}
-        value={value}
+        // value={value}
         type={customType}
         onBlur={handleBlur}
-        onChange={handleChange}
+        // onChange={handleChange}
         placeholder={placeholder}
       />
       {type === 'password' && (

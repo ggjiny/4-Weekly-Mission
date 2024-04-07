@@ -20,7 +20,7 @@ const SharedPage = () => {
     <>
       <Nav />
       <Header name={name} owner={owner} />
-      <main>
+      <main style={{ backgroundColor: 'white' }}>
         <SearchBar
           value={searchInput}
           onInputChange={(value: string) => handleSearchInputChange(value)}

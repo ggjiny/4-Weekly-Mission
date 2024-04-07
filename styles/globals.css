@@ -10,6 +10,7 @@ a {
 html,
 body {
   height: 100%;
+  background-color: var(--background);
 }
 #body {
   height: 100%;
