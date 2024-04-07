@@ -93,7 +93,7 @@ const FolderCardItem = ({ link, folderList, searchItem }: FolderCardItemProps) =
         className={styles['kebab-icon']}
         src={kebabIcon}
         alt="kebab-icon"
-        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+        onClick={() => setIsDropdownOpen((isDropdownOpen) => !isDropdownOpen)}
       />
       {isDropdownOpen && (
         <div className={styles['card-dropdown']}>

@@ -76,28 +76,25 @@ const FolderCardList = ({ id, name, folderList, searchItem }: FolderCardListProp
           )}
         </div>
       </div>
-      {loading ? (
-        <div className={styles['no-link-data']}>데이터를 불러오는 중...</div>
-      ) : (
-        <>
-          {links?.length > 0 ? (
-            <div className={styles['card-list']}>
-              <div className={styles['card-list-container']}>
-                {links.map((item: Link) => (
-                  <FolderCardItem
-                    key={item.id}
-                    link={item}
-                    folderList={folderList}
-                    searchItem={searchItem}
-                  />
-                ))}
-              </div>
+      {loading && <div className={styles['no-link-data']}>데이터를 불러오는 중...</div>}
+      {!loading &&
+        (links?.length > 0 ? (
+          <div className={styles['card-list']}>
+            <div className={styles['card-list-container']}>
+              {links.map((item: Link) => (
+                <FolderCardItem
+                  key={item.id}
+                  link={item}
+                  folderList={folderList}
+                  searchItem={searchItem}
+                />
+              ))}
             </div>
-          ) : (
-            <div className={styles['no-link-data']}>저장된 링크가 없습니다.</div>
-          )}
-        </>
-      )}
+          </div>
+        ) : (
+          <div className={styles['no-link-data']}>저장된 링크가 없습니다.</div>
+        ))}
+
       {isModalOpen && (
         <ModalPortal>
           <Modal

@@ -16,20 +16,17 @@ interface CardListProps {
 }
 
 const CardList = ({ links, search }: CardListProps) => {
+  if (links.length === 0)
+    return <h1 className={styles.fail}>폴더 데이터를 가져오지 못했습니다.</h1>;
+
   return (
-    <>
-      {links.length ? (
-        <div className={styles.cardList}>
-          <div className={styles.cardListContainer}>
-            {links.map((item) => (
-              <CardItem key={item.id} link={item} searchItem={search} />
-            ))}
-          </div>
-        </div>
-      ) : (
-        <h1 className={styles.fail}>폴더 데이터를 가져오지 못했습니다.</h1>
-      )}
-    </>
+    <div className={styles.cardList}>
+      <div className={styles.cardListContainer}>
+        {links.map((item) => (
+          <CardItem key={item.id} link={item} searchItem={search} />
+        ))}
+      </div>
+    </div>
   );
 };
 export default CardList;
