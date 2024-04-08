@@ -28,10 +28,10 @@ export default function Input({ name, type, placeholder, register, errors }: Inp
         placeholder={placeholder}
         {...register}
       />
-      {name === 'password' && (
+      {(name === 'password' || name === 'passwordCheck') && (
         <Image src={isEyeOpen ? eyeOn : eyeOff} alt="password-eye" onClick={handleEyeClick} />
       )}
-      {errors && <div className={styles.errorMessage}>{error?.message?.toString()}</div>}
+      {error && <div className={styles.errorMessage}>{error?.message?.toString()}</div>}
     </>
   );
 }
